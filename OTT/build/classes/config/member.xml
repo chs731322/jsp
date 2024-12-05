@@ -14,28 +14,38 @@
 	</resultMap>
 
 	<update id="updateMemberInfo" parameterType="dto.UsersDTO">
-		UPDATE Users
-		<set>
-			<if test="id != null">
-				id = #{id},
-			</if>
-			<if test="name != null">
-				name = #{name},
-			</if>
-			<if test="email != null">
-				email = #{email},
-			</if>
-			birth = #{birth},
-			password = standard_hash(#{password}, 'SHA512')
-			
-		</set>
-		WHERE memberNum = #{memberNum}
-	</update>
+    UPDATE Users
+    <set>
+        <if test="id != null">
+            id = #{id},
+        </if>
+        <if test="name != null">
+            name = #{name},
+        </if>
+        <if test="email != null">
+            email = #{email},
+        </if>
+        <if test="birth != null">
+            birth = #{birth},
+        </if>
+        password = standard_hash(#{password}, 'SHA512')
+    </set>
+    WHERE id = #{id, jdbcType=VARCHAR}
+</update>
+
+
 
 
 	<!-- 사용자 삭제 쿼리 -->
 	<delete id="deleteMember" parameterType="string">
-		DELETE FROM Users WHERE memberNum = #{memberNum}
+   		 DELETE FROM Users WHERE id = #{id}
 	</delete>
+	
+
+	<select id="selectUserById" parameterType="string"
+		resultMap="UsersDTO">
+		SELECT * FROM Users WHERE id = #{id}
+	</select>
+
 
 </mapper>

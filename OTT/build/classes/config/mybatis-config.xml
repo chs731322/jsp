@@ -9,13 +9,13 @@
       <dataSource type="POOLED">
         <property name="driver" value="oracle.jdbc.OracleDriver"/>
         <!-- nam3324.synology.me 포트번호 : 32800 아이디 : c##ott 비밀번호 : 123456 -->
-        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:32800/xe"/>
+        <property name="url" value="jdbc:oracle:thin:@nam3324.synology.me:32800/xe"/>
         <property name="username" value="c##ott"/>
         <property name="password" value="123456"/>
       </dataSource>
     </environment>
   </environments>
   <mappers>
-    <mapper resource="config/member-mapper.xml"/>
+    <mapper resource="config/member.xml"/>
   </mappers>
 </configuration>

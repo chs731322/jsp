@@ -8,7 +8,7 @@ public interface memberInfoMapper {
 
 	int updateMemberInfo(UsersDTO dto);
 	
-	int deleteMember(String memberNum);
+	int deleteMember(String id);
 
 	UsersDTO selectUserById(String id);
 
