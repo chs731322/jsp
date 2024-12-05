@@ -46,40 +46,36 @@ public class SelectMemberNameServlet extends HttpServlet {
 		//실제 클라이언트가 보낸 데이터를 문자열로 읽어오는 부분
 		while((str = br.readLine()) != null)
 			builder.append(str);
-		
 		System.out.println(builder.toString());
 		
-		// 문자열을 json으로 변환 후 search 데이터 추출
+		//문자열을 json으로 변환 후 search 데이터 추출
 		JSONObject json = new JSONObject(builder.toString());
 		String search = json.getString("search");
 		System.out.println(search);
 		
-		// 회원 이름 검색 수행해서 데이터 조회
+		//회원 이름 검색 수행해서 데이터 조회
 		List<BoardMemberDTO> list = 
 				BoardMemberService.getInstance().selectNameMember(search);
-		
-		// 받은 회원 정보 개수
+		//받은 회원정보 개수
 		int count = list.size();
-		
-		// 조회한 현재 날짜 시간도 문자열 저장
+		//조회한 현재 날짜 시간도 문자열 저장 YYYY-MM-DD HH:mm:ss
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 		Date date = Calendar.getInstance().getTime();
 		String dateString = sdf.format(date);
-
-		System.out.println(list);
-		System.out.println(count);
-		System.out.println(dateString);
-
-		// JSON으로 변환
+		
+		//JSON으로 변환
 		json = new JSONObject();
-		// JSON에 데이터 추가
+		//JSON에 데이터 추가
 		json.put("list", list);
 		json.put("count", count);
-		json.put("date", dateString);
+		json.put("date",dateString);
 		
 		System.out.println(json.toString());
 		
 		response.getWriter().println(json.toString());
+		
+		
+		
 	}
 
 	/**

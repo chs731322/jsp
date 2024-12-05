@@ -16,4 +16,7 @@
   <delete id="deleteMember" parameterType="string">
   	delete from board_member where id = #{id}
   </delete>
+  <select id="selectIdMember" parameterType="string" resultType="int">
+  	select count(*) as member_count from board_member where id like #{id}
+  </select>
 </mapper>

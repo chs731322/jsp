@@ -32,6 +32,10 @@ public class BoardMemberService {
 		return mapper.selectAllMember();
 	}
 
+	public int selectIdMember(String id) {
+		return mapper.selectIdMember(id);
+	}
+
 	
 	
 }
