@@ -198,6 +198,11 @@ body {
 					<label for="account">등록 계좌</label> 
 					<input type="text" id="account" placeholder="등록 계좌">
 					
+					<div class="account">
+					
+					
+					</div>
+					
 					<div class="actions">
 						<a href="deleteMember.do">회원탈퇴</a>
 						<button type="submit">저장</button>
