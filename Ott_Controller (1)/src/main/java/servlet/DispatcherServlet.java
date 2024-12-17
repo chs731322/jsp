@@ -1,6 +1,7 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +10,6 @@ import view.ModelAndView;
 
 import java.io.IOException;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 import controller.Controller;
@@ -20,6 +20,7 @@ import controller.HandlerMapping;
  */
 //모든 WebServlet 주소 받으려면 * / *.do = .do가 포함된애만 
 @WebServlet("*.do")
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 50)
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private String rootPath = "/WEB-INF/views/";

@@ -161,5 +161,60 @@ public class BoardService {
 			return mapper.getBoardHate(bno);
 		}
 	}
+
+	public int insertBoardCommentLike(int cno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("cno", cno);
+			map.put("id", id);
+			return mapper.insertBoardCommentLike(map);
+		}
+	}
+
+	public int deleteBoardCommentLike(int cno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("cno", cno);
+			map.put("id", id);
+			return mapper.deleteBoardCommentLike(map);
+		}		
+	}
+
+	public int getBoardCommentLike(int cno) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.getBoardCommentLike(cno);
+		}
+	}
 	
+	
+	public int getBoardCommentHate(int bno) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.getBoardCommentHate(bno);
+		}
+	}
+
+	public int insertBoardCommentHate(int cno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("cno", cno);
+			map.put("id", id);
+			return mapper.insertBoardCommentHate(map);
+		}
+	}
+
+	public int deleteBoardCommentHate(int cno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("cno", cno);
+			map.put("id", id);
+			return mapper.deleteBoardCommentHate(map);
+		}		
+	}
+
 }

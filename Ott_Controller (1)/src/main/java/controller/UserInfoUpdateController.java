@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import dto.UsersDTO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.UserService;
@@ -56,10 +57,12 @@ public class UserInfoUpdateController implements Controller {
 			return null;
 		}
 
+		
 		// DTO 생성
 
 		UsersDTO dto = new UsersDTO(id, name, email, birth, password, account);
 		UserService.getInstance().updateUserInfo(dto);
+		
 
 		ModelAndView view = new ModelAndView();
 		view.setPath("mypage_view.do");

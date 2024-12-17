@@ -7,9 +7,8 @@ public class UsersDTO {
 	private String birth;
 	private String password;
 	private String account;
+	private String profileImg; // 프로필 이미지 경로
 	
-	
-	public UsersDTO() { }
 	
 	public UsersDTO(String id, String name, String email, String birth, String password, String account) {
 		super();
@@ -20,6 +19,7 @@ public class UsersDTO {
 		this.password = password;
 		this.account = account;
 	}
+	
 	public String getId() {
 		return id;
 	}
@@ -59,6 +59,13 @@ public class UsersDTO {
 	    this.account = account;
 	}
 
-	
+	public String getProfileImg() {
+		return profileImg;
+	}
+
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
+
 	
 }

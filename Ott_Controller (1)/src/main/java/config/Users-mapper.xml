@@ -15,21 +15,29 @@
     <result property="email" column="email" />
     <result property="birth" column="birth" />
     <result property="account" column="account" />
+    <result property="profileImg" column="profileImg" />
 </resultMap>
 
 
 	<update id="updateUserInfo" parameterType="dto.UsersDTO">
     UPDATE Users
-    <set>
+   	 <set>
         <if test="name != null">name = #{name},</if>
         <if test="email != null">email = #{email},</if>
         <if test="birth != null">birth = #{birth},</if>
         account = #{account},
         password = standard_hash(#{password}, 'SHA512')
-    </set>
-    WHERE id = #{id}
+   	 </set>
+   	 WHERE id = #{id}
 </update>
 
+<update id="profileUpdate" parameterType="dto.UsersDTO">
+	update Users
+	<set>
+	profileImg = #{profileImg}
+	</set>
+	WHERE id = #{id}
+</update>
 
 
 	<delete id="deleteUser" parameterType="string">

@@ -33,10 +33,22 @@ public class UserService {
 	}
 
 	public int updateUserInfo(UsersDTO dto) {
-		try (SqlSession session = DBManager.getInstance().getSession()) {
-			UsersMapper mapper = session.getMapper(UsersMapper.class);
-			return mapper.updateUserInfo(dto);
-		}
+	    try (SqlSession session = DBManager.getInstance().getSession()) {
+	        UsersMapper mapper = session.getMapper(UsersMapper.class);
+	        int result = mapper.updateUserInfo(dto);
+	        session.commit(); // 변경 사항 반영
+	        return result;
+	    }
 	}
+
+	public int profileUpdate(UsersDTO user) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+	        UsersMapper mapper = session.getMapper(UsersMapper.class);
+	        int result = mapper.profileUpdate(user);
+	        session.commit(); // 변경 사항 반영
+	        return result;
+	    }
+	}
+
 
 }

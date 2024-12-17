@@ -14,4 +14,6 @@ public interface UsersMapper {
 
 	UsersDTO selectUserById(String id);
 
+	int profileUpdate(UsersDTO user);
+
 }

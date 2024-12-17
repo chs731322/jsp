@@ -41,8 +41,8 @@
 						//좋아요, 싫어요 결과 출력
 						//개수 최신
 						alert(result.msg);
-						document.querySelector('#like_count').innerText = result.blike;
-						document.querySelector('#hate_count').innerText = result.bhate;
+						document.querySelector('#comment_like_count').innerText = result.clike;
+						document.querySelector('#comment_hate_count').innerText = result.chate;
 					})
 				}
 			})

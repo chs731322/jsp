@@ -34,58 +34,71 @@
 
 </head>
 <body>
-	<form action="userUpdate.do" method="post">
-		<div class="container">
-			<div class="header">
-				<a href="./Main.do" id="logo"></a>
-				<div class="title">마이페이지</div>
-				<div class="user-info">
-					<span id="user_name">${user.name} 님</span> | <a href="logout.do"
-						id="logout">로그아웃</a>
+	<div class="container">
+		<div class="header">
+			<a href="./Main.do" id="logo"></a>
+			<div class="title">마이페이지</div>
+			<div class="user-info">
+				<span id="user_name">${user.name} 님</span> | <a href="logout.do"
+					id="logout">로그아웃</a>
+			</div>
+		</div>
+		<div class="main-content">
+			<div class="profile-section">
+				<form action="profileImgUpdate.do" method="post" enctype="multipart/form-data">
+	 				<c:choose>
+						<c:when test='${user.profileImg != null}'> 
+							<img src="profileImage?path=${user.profileImg}" alt="프로필 사진"
+								width="100" height="100">
+						</c:when>
+						<c:otherwise>
+							<img alt="프로필 기본" src="img/profile.png">
+						</c:otherwise>
+					</c:choose>
+					<label for="profileImg" class="camera-icon">
+           				 <img src="img/camera.png" alt="사진 변경">
+       				</label>
+        			<input type="file" name="profileImg" id="profileImg" accept="image/*">
+					<button type="submit"  class="profile-submit-button">변경하기</button>
+				</form>
+				<h2>
+					<c:if test="${user != null}">${user.name} 님</c:if>
+				</h2>
+				<div class="ott-sharing">
+					<!-- OTT 공유 상태 -->
+					<c:forEach var="groupmember" items="${groupmemberList}">
+						<c:if test="${groupmember.platformNum} == 'Netflix'">
+							<img alt="" src="">
+							<!-- 링크는 게시글 jsp 파일 받고 나서 수정 -->
+							<!--<a href="post.jsp?postId=${post.postNum}">넷플릭스 공유 중</a>  -->
+							<a>넷플릭스 공유 중</a>
+						</c:if>
+						<c:if test="${groupmember.platformNum} == 'Disneyplus'">
+							<img alt="" src="">
+							<p>디즈니플러스 공유 중</p>
+						</c:if>
+						<c:if test="${groupmember.platformNum} == 'YouTube'">
+							<img alt="" src="">
+							<p>유튜브프리미엄 공유 중</p>
+						</c:if>
+						<c:if test="${groupmember.platformNum} == 'Coupang'">
+							<img alt="" src="">
+							<p>쿠팡플레이 공유 중</p>
+						</c:if>
+						<c:if test="${groupmember.platformNum} == 'Wavve'">
+							<img alt="" src="">
+							<p>웨이브 공유 중</p>
+						</c:if>
+						<c:if test="${groupmember.platformNum} == 'Tving'">
+							<img alt="" src="">
+							<p>티빙 공유 중</p>
+						</c:if>
+						<!-- <a id="payment" href="https://link.kakaopay.com/_/0pDpd3P">1/n 정산하기</a> -->
+					</c:forEach>
 				</div>
 			</div>
-			<div class="main-content">
-				<div class="profile-section">
-					<img src="img/profile.png" alt="프로필 사진">
-					<h2>
-						<c:if test="${user != null}">
-              				${user.name} 님
-            			</c:if>
-					</h2>
-					<div class="ott-sharing">
-						<!-- OTT 공유 상태 -->
-						<c:forEach var="groupmember" items="${groupmemberList}">
-							<c:if test="${groupmember.platformNum} == 1">
-								<img alt="" src="">
-								<!-- 링크는 게시글 jsp 파일 받고 나서 수정 -->
-								<!--<a href="post.jsp?postId=${post.postNum}">넷플릭스 공유 중</a>  -->
-								<a>넷플릭스 공유 중</a>
-							</c:if>
-							<c:if test="${groupmember.platformNum} == 2">
-								<img alt="" src="">
-								<p>디즈니플러스 공유 중</p>
-							</c:if>
-							<c:if test="${groupmember.platformNum} == 3">
-								<img alt="" src="">
-								<p>유튜브프리미엄 공유 중</p>
-							</c:if>
-							<c:if test="${groupmember.platformNum} == 4">
-								<img alt="" src="">
-								<p>쿠팡플레이 공유 중</p>
-							</c:if>
-							<c:if test="${groupmember.platformNum} == 5">
-								<img alt="" src="">
-								<p>웨이브 공유 중</p>
-							</c:if>
-							<c:if test="${groupmember.platformNum} == 6">
-								<img alt="" src="">
-								<p>티빙 공유 중</p>
-							</c:if>
-							<!-- <a id="payment" href="https://link.kakaopay.com/_/0pDpd3P">1/n 정산하기</a> -->
-						</c:forEach>
-					</div>
-				</div>
-				<div class="form-section">
+			<div class="form-section">
+				<form action="userUpdate.do" method="post">
 					<label for="id">아이디</label> <input type="text" id="id" name="id"
 						readonly="readonly"
 						value="<c:if test="${user != null}">${user.id}</c:if>"> <label
@@ -110,20 +123,22 @@
 
 
 					<div class="actions">
-						<a href="userDelete.do?id=${user != null ? user.id : ''}" id="deleteLink">회원탈퇴</a>
+						<a href="userDelete.do?id=${user != null ? user.id : ''}"
+							id="deleteLink">회원탈퇴</a>
 
 						<button type="submit" id="updateInfo">저장</button>
 					</div>
-				</div>
-			</div>
-			<div class="footer">
-				<p id="footer_values">Connecting the world, one click at a time.</p>
-				<p>Contact us: support@shareME.com | Phone: +82-10-1234-5678</p>
-				<p>Address: 123 Dangsan-dong, Yeongdeungpo-gu, Seoul, South Korea</p>
-				<p>&copy; 2024 shareME. All rights reserved.</p>
-
+				</form>
 			</div>
 		</div>
-	</form>
+		<div class="footer">
+			<p id="footer_values">Connecting the world, one click at a time.</p>
+			<p>Contact us: support@shareME.com | Phone: +82-10-1234-5678</p>
+			<p>Address: 123 Dangsan-dong, Yeongdeungpo-gu, Seoul, South Korea</p>
+			<p>&copy; 2024 shareME. All rights reserved.</p>
+
+		</div>
+	</div>
+	
 </body>
 </html>

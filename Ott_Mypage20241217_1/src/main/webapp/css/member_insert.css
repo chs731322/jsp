@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* 전체 페이지 설정 */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F9FAFB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 회원가입 컨테이너 */
+.signup-container {
+    background-color: #FFFFFF;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    width: 350px;
+    text-align: center;
+}
+
+.signup-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* 아이디 입력칸과 중복체크 버튼 그룹 */
+.id-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.id-group .id-input {
+    flex: 1;
+    height: 42px; /* 동일 높이 */
+    padding: 0 10px;
+    font-size: 14px;
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.id-group .check-button {
+    width: 90px;
+    height: 42px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.id-group .check-button:hover {
+    background-color: #E5E7EB;
+}
+
+/* 입력 필드 공통 스타일 */
+.signup-container input {
+    width: 100%;
+    height: 42px;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.check-result{
+	box-sizing: border-box;
+	margin-top: 0;
+}
+.signup-container button[type="submit"] {
+    width: 100%;
+    height: 42px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #F3F4F6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.signup-container button[type="submit"]:hover {
+    background-color: #E5E7EB;
+}

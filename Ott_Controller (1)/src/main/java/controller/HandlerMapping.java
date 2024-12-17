@@ -22,7 +22,7 @@ public class HandlerMapping {
 			break;
 		case "login":
 			controller = new LoginController();
-		break;
+			break;
 		case "Main":
 			controller = new MainController();
 			break;
@@ -37,6 +37,11 @@ public class HandlerMapping {
 			break;
 		case "mypage_view":
 			controller = new MypageController();
+			break;
+		case "profileImgUpdate":
+			controller = new ProfileImgController();
+			break;
+			
 		}
 		return controller;
 	}
