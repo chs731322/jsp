@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PostMapper">
+    <resultMap id="PostDTO" type="dto.PostDTO">
+        <id column="postnum" property="postNum" />
+        <result column="platformnum" property="platformNum"/> <!-- 수정 -->
+        <result column="id" property="id"/>
+        <result column="postdata" property="postData"/>
+        <result column="sharenum" property="shareNum"/>
+        <result column="nownum" property="nowNum" />
+        <result column="ottid" property="ottid"/>
+        <result column="ottpassword" property="ottpassword"/> <!-- 수정 -->
+        <result column="postdate" property="postDate"/>
+    </resultMap>
+
+    <insert id="insertPost" parameterType="dto.PostDTO">
+        INSERT INTO post (postnum, platformnum, id, postdate, postdata)
+        VALUES (#{postNum}, #{platformNum}, #{id}, SYSDATE, #{postData})
+    </insert>
+
+    <insert id="insertGroup" parameterType="dto.PostDTO">
+        INSERT INTO groups (gno, platformnum, ott_id, ott_password)
+        VALUES (#{postNum}, #{platformNum}, #{ottid}, #{ottpassword})
+    </insert>
+
+    <insert id="insertGroupMember" parameterType="dto.PostDTO">
+        INSERT INTO group_member (gno, platformnum, id)
+        VALUES (#{postNum}, #{platformNum}, #{id})
+    </insert>
+
+    <select id="getPostList" resultType="dto.PostDTO">
+        SELECT * FROM POST_VIEW
+    </select>
+
+    <select id="searchpostnum" parameterType="String" resultType="dto.PostDTO">
+        SELECT * FROM POST_VIEW WHERE postnum = #{postNum}
+    </select>
+
+    <select id="platformnumPostList" parameterType="String" resultType="dto.PostDTO">
+        SELECT * FROM POST_VIEW WHERE platformnum = #{platformNum}
+    </select>
+
+    <delete id="deleteGroup" parameterType="String">
+        DELETE FROM groups WHERE gno = #{postNum}
+    </delete>
+    
+
+    <delete id="deletePost" parameterType="String">
+        DELETE FROM post WHERE postnum = #{postNum}
+    </delete>
+
+    <select id="searchott" parameterType="dto.PostDTO" resultType="dto.PostDTO">
+    SELECT * 
+    FROM groups 
+    WHERE platformnum = #{platformNum, jdbcType=VARCHAR} 
+      AND ott_id = #{ottid, jdbcType=VARCHAR}
+	</select>
+
+</mapper>

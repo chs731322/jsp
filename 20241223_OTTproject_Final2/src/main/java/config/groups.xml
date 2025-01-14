@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.GroupsMapper">
+    
+    <!-- 게시글 삽입 -->
+    <insert id="insertGroups" parameterType="dto.GroupsDTO">
+        INSERT INTO Groups (GNO, PLATFORMNUM, OTT_ID,  OTT_PASSWORD)
+        VALUES (post_seq.nextVal, #{platformnum, jdbcType=VARCHAR}, #{ott_id, jdbcType=VARCHAR}, #{ott_password, jdbcType=VARCHAR})
+    </insert>
+    
+    <!-- 전체 그룹 목록 가져오기 -->
+    <select id="getGroupsList" resultType="dto.GroupsDTO">
+        SELECT * FROM GROUPS
+    </select>
+
+    <!-- 특정 그룹의 OTT 정보 가져오기 -->
+    <select id="getGroupsInfo" resultType="dto.GroupsDTO" parameterType="dto.GroupsDTO">
+        SELECT GNO, PLATFORMNUM, OTT_ID, OTT_PASSWORD
+        FROM GROUPS
+        WHERE GNO = #{gno, jdbcType=VARCHAR} AND PLATFORMNUM = #{platformnum, jdbcType=VARCHAR}
+    </select>
+    
+    <select id="getGroupInfoByGno" resultType="dto.GroupsDTO" parameterType="string">
+    SELECT GNO, OTT_ID, OTT_PASSWORD
+    FROM GROUPS
+    WHERE GNO = #{gno, jdbcType=VARCHAR}
+</select>
+    
+    
+</mapper>

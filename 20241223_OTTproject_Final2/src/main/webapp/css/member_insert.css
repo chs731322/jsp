@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+/* 전체 페이지 설정 */
+body {
+    margin: 0;
+    background-color: #F9FAFB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* 세로 정렬 */
+}
+
+/* 로고 컨테이너 */
+.logo-container {
+    display: flex;
+    justify-content: center; /* 로고를 가로 중앙 정렬 */
+    align-items: center;
+    margin-bottom: 20px; /* 로고와 회원가입 박스 사이 간격 */
+}
+
+.signup-logo {
+    width: 200px; /* 로고 이미지 크기: 100px -> 130px (1.3배 확대) */
+    height: auto; /* 비율 유지 */
+}
+
+/* 회원가입 컨테이너 */
+.signup-container {
+    background-color: #FFFFFF;
+    padding: 30px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    width: 350px;
+    text-align: center;
+}
+
+/* 회원가입 제목 */
+.signup-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+/* 아이디 입력칸과 중복체크 버튼 그룹 */
+.id-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px; /* 아이디 그룹과 비밀번호 그룹 사이 간격 유지 */
+}
+
+.id-group .id-input {
+    flex: 1;
+    height: 42px;
+    font-size: 14px;
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.id-input {
+	padding: 10px;
+}
+
+
+.id-group .check-button {
+    width: 90px;
+    height: 42px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.id-group .check-button:hover {
+    background-color: #0056b3;
+}
+
+.signup-container input[type="password"] {
+    margin-bottom: 0; /* margin 제거 */
+}
+
+.password-group {
+    display: flex;
+    flex-direction: column; /* 수직 정렬 */
+}
+
+/* 비밀번호 입력 필드 스타일 */
+.password-group input[type="password"] {
+    margin: 0; /* 개별 여백 제거 */
+}
+
+.password-error {
+	padding: 0px;
+    font-size: 0px;
+}
+
+/* 입력 필드 공통 스타일 (나머지 필드 적용) */
+.signup-container input:not(.id-input) {
+    width: 100%;
+    height: 42px;
+    padding: 0 10px;
+    margin-bottom: 25px; /* 나머지 입력 필드 간격 */
+    font-size: 14px;
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* 결과 메시지 */
+.check-result {
+	font-size: 0px;
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 25px; /* 결과 메시지와 비밀번호 그룹 사이 간격 */
+}
+
+/* 회원가입 버튼 스타일 */
+.signup-container button[type="submit"] {
+    width: 100%;
+    height: 42px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.GroupMemberMapper">
+    <resultMap id="GroupMemberDTO" type="dto.GroupMemberDTO">
+        <id property="gno" column="gno"  javaType="java.lang.String" />
+        <result property="platformNum" column="platformNum" />
+        <result property="id" column="id" />
+        <result property="payment" column="payment" />
+        <result property="createdDate" column="created_date" javaType="java.time.LocalDateTime" /> <!-- 시간 컬럼 추가 -->
+    </resultMap>
+
+	<select id="getGroupMemberInfo" parameterType="map"	resultMap="GroupMemberDTO">
+		SELECT *
+		FROM Group_Member
+		WHERE id = #{id, jdbcType=VARCHAR}
+		AND gno = #{gno, jdbcType=VARCHAR}
+		AND platformNum = #{platformNum, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getGroupMemberById" parameterType="string" resultMap="GroupMemberDTO">
+    SELECT * FROM group_member WHERE id = #{id}
+</select>
+	
+	
+	
+	<update id="updatePayment" parameterType="dto.GroupMemberDTO">
+		UPDATE group_member
+        SET 
+            payment = #{payment},
+            created_date = #{createdDate, jdbcType=TIMESTAMP} <!-- created_date 추가 -->
+        WHERE id = #{id}
+        AND gno = #{gno}
+        AND platformNum = #{platformNum}
+	</update>
+
+	<update id="resetExpiredPayments">
+    UPDATE group_member
+    SET 
+        payment = 0,
+        created_date = NULL
+    WHERE created_date &lt; DATE_SUB(NOW(), INTERVAL 30 DAY);
+	</update>
+
+
+	<select id="getAllGroupMembers" resultMap="GroupMemberDTO">
+    	SELECT * FROM group_member
+	</select>
+	
+	<update id="updateOnlyPayment" parameterType="dto.GroupMemberDTO">
+    UPDATE group_member
+    SET 
+        payment = #{payment}
+    WHERE id = #{id}
+    AND gno = #{gno}
+    AND platformNum = #{platformNum}
+</update>
+
+<delete id="deleteGM" parameterType="String">
+    DELETE FROM group_member
+    WHERE gno = #{postnum}
+</delete>
+
+</mapper>

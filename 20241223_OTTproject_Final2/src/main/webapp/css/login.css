@@ -1,0 +1,105 @@
+/* 전체 화면 중앙 정렬 및 타이틀 조정 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F9FAFB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+    height: 100vh; /* 화면 높이 전체 */
+}
+
+.title-container {
+	font-size: 24px;
+	letter-spacing: -50;
+    text-align: center;
+    margin-bottom: 5px; /* 타이틀과 로그인 컨테이너 사이 간격 조정 */
+}
+
+.title-container h2 {
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 10px; /* 설명과 로그인 제목 간 간격 */
+    margin-bottom: 0; /* 로그인 제목 간격 줄임 */
+    color: #000000;
+}
+
+.title-container .subtitle {
+	letter-spacing: -25;
+    font-size: 20px; 
+    color: #6B7280;
+    line-height: 1.5;
+}
+
+.title-container img{
+	height: 25px;
+	padding: 0px 0px 0px 5px;
+}
+
+
+/* 로그인 컨테이너 스타일 */
+.login-container {
+    background-color: #FFFFFF;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    width: 350px;
+    text-align: center;
+    margin-top: 10px; /* 타이틀과 약간의 간격 추가 */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #D1D5DB;
+}
+
+/* 로그인 버튼 스타일 */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* 호버 시 색상 변경 */
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #6B7280;
+}
+
+.register-link a {
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

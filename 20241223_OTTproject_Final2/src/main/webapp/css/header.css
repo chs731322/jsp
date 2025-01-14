@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+header {
+    width: 1200px; /* 고정된 헤더 넓이 */
+    margin: 0 auto; /* 페이지 중앙 정렬 */
+    display: flex; /* 유연한 레이아웃을 위한 flexbox 사용 */
+    justify-content: space-between; /* 양쪽으로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 20px; /* 내부 여백 */
+    border-bottom: 1px solid #e0e0e0; /* 하단 경계선 */
+}
+
+header nav {
+    display: flex; /* 네비게이션 링크를 가로로 정렬 */
+    gap: 15px; /* 링크 간격 */
+}
+
+header nav a {
+    text-decoration: none; /* 밑줄 제거 */
+    font-size: 18px; /* 텍스트 크기 */
+    color: #000000; /* 기본 텍스트 색상 */
+    margin: 0 15px; /* 외부 여백 */
+    transition: color 0.3s ease; /* 색상 변경 효과 */
+}
+
+header nav a:hover {
+    color: #007BFF; /* 호버 시 링크 색상 변경 */
+}
+
+header .user-info {
+    display: flex; /* 프로필 사진과 사용자 이름을 가로로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 10px; /* 요소 간 간격 */
+}
+
+header .user-info .profile-icon {
+    width: 35px; /* 프로필 사진 크기 */
+    height: 35px;
+    border-radius: 50%; /* 둥근 프로필 사진 */
+    object-fit: cover; /* 사진이 잘리지 않고 비율 유지 */
+    border: 2px solid #ddd; /* 테두리 추가 */
+}
+
+
+header .user-info span {
+    font-weight: bold; /* 사용자 이름 굵게 처리 */
+    font-size: 16px;
+}
+
+header .user-info a {
+    font-weight: bold; /* 로그아웃 버튼 굵게 처리 */
+    font-size: 16px;
+}
+
+#logo {
+    display: block; /* 블록 요소로 설정하여 크기 조절 가능 */
+    width: 154px;
+    height: 30px; /* 로고의 높이를 증가 */
+    background-image: url('../img/logo1.png'); /* 기본 로고 이미지 */
+    background-size: contain; /* 로고 이미지 크기 조정 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    transition: background-image 0.3s ease; /* 호버 시 이미지 변경 효과 */
+}
+
+#logo:hover {
+    background-image: url('../img/logo_black.png'); /* 호버 시 변경될 로고 이미지 */
+}
